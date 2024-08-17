@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ContactInfo from "../components/ContactInfo";
+import ContactForm from "../components/ContactForm";
 
 export default function Contact() {
   const [pageData, setPageData] = useState(null);
@@ -41,9 +42,10 @@ export default function Contact() {
           id="form"
           className="flex-1 flex flex-col bg-gray-100 justify-center items-center"
         >
-          {'ContactForm'}
+          <ContactForm />
         </div>
       </div>
     </div>
   );
 }
+
