@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const express = require("express");
 const cors = require("cors");
 
@@ -25,6 +27,29 @@ app.get("/", (req, res) => {
   ]);
 });
 
-app.listen(4000, () => {
-    console.log("connected on port 4000");
+app.post('/submit-form', (req, res) => {
+  const { formData } = req.body;
+
+  if (!formData || !formData.email) {
+    return res.status(400).send('Invalid form data');
+  }
+
+  // Assuming email is unique and only save the latest form data from the same email
+  const filePath = path.join(__dirname + "/form_data/", `form-data-${formData.email}.json`);
+  const fileContent = JSON.stringify(formData, null, 2);
+
+  fs.writeFile(filePath, fileContent, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send('Error writing file');
+    }
+    res.status(200).send('Form data saved successfully');
   });
+});
+
+
+
+
+app.listen(4000, () => {
+  console.log("connected on port 4000");
+});
