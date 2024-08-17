@@ -22,7 +22,24 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    // Submit the form data to the server
+    try {
+      const response = await fetch("http://localhost:4000/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ formData }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Server failed to save data, try again later");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   const inputClass =
@@ -51,7 +68,7 @@ export default function ContactForm() {
             onChange={handleChange}
             className={inputClass}
             placeholder="First name"
-            // required={true}
+            required={true}
           />
 
           <input
@@ -61,7 +78,7 @@ export default function ContactForm() {
             onChange={handleChange}
             className={inputClass}
             placeholder="Last name"
-            // required={true}
+            required={true}
           />
 
           <input
@@ -71,7 +88,7 @@ export default function ContactForm() {
             onChange={handleChange}
             className={inputClass}
             placeholder="Email address"
-            // required={true}
+            required={true}
           />
 
           <input
@@ -81,7 +98,7 @@ export default function ContactForm() {
             onChange={handleChange}
             className={inputClass}
             placeholder="Phone number"
-            // required={true}
+            required={true}
           />
 
           <textarea
@@ -91,7 +108,7 @@ export default function ContactForm() {
             onChange={handleChange}
             className={inputClass}
             placeholder="What do you want to speak to us about"
-            // required={true}
+            required={true}
           ></textarea>
 
           <button
