@@ -44,3 +44,4 @@
 - Assuming the page data returned from API response is an array with a single object.
 - Assuming user email is unique and only save the latest form data from the same email
 - Assuming the saved form data are located in `/node/form_data` folder and bind to `app/form_data` in docker container.
+- Assuming the server and client running in separate containers for modularity, scalability, and a cleaner separation of concerns.
