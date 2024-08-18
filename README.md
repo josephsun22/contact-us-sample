@@ -6,7 +6,7 @@
 
 ## How to Run
 
-### 1. Using Docker
+### 1. Using Docker(Run server and client in a single container)
 
 **Requirements:**
 - Docker Version: 4.32.0 (157355) Mac
@@ -17,7 +17,7 @@
 2. Navigate to the project directory.
 3. Execute the following command:
    ```bash
-   docker compose up --build
+   docker build -t contact-us . && docker run -p 3000:3000 -p 4000:4000 contact-us
    ```
 4.	After the build completes, you can access the applications in your browser:
 - Client: http://localhost:3000
@@ -44,4 +44,4 @@
 - Assuming the page data returned from API response is an array with a single object.
 - Assuming user email is unique and only save the latest form data from the same email
 - Assuming the saved form data are located in `/node/form_data` folder and bind to `app/form_data` in docker container.
-- Assuming the server and client running in separate containers for modularity, scalability, and a cleaner separation of concerns.
+- Assuming the server and client running in a single Docker container.
