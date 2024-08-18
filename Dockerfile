@@ -16,4 +16,4 @@ COPY client/ ./client/
 
 EXPOSE 3000 4000
 
-CMD ["npm start --prefix node & npm start --prefix client"]
+CMD sh -c "npm start --prefix node & npm start --prefix client"
