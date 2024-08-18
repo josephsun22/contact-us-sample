@@ -6,7 +6,7 @@
 
 ## How to Run
 
-### 1. Using Docker
+### 1. Using Docker(Run server and client in separate containers)
 
 **Requirements:**
 - Docker Version: 4.32.0 (157355) Mac
